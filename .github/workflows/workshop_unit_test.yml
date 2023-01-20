@@ -18,7 +18,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax 
+          python-version: '3.8.15' 
       - name: Upgrade pip
         run: |
           python -m pip install --upgrade pip
@@ -27,11 +27,11 @@ jobs:
       - name: AZ Login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_SERVICE_PRINCIPAL }} # SETUP: replace AZURE_SERVICE_PRINCIPAL with your own secret name    
+          creds: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}    
       - name: Install AZ ML and tools
-        run: | # SETUP line 34 to point to your own AML workspace
-          az extension add -n ml -y --version 2.2.1
-          az configure --defaults group=azureml workspace=ws01ent location=westus2   
+        run: | 
+          az extension add -n ml -y --version 2.5.0
+          az configure --defaults group=rg_dataai_demos workspace=aml_dataai_demos location=eastus   
       - name: Run Feature Engineering
         uses: ./.github/actions/aml-job-create
         with:
