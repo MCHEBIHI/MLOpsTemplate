@@ -31,6 +31,8 @@ def parse_args():
     # return args
     return args
 
+def addThisParam():
+    pass
 
 def createClassModel(algo_name, catg, nums):
     numeric_transformer = Pipeline(steps=[('imputer', SimpleImputer(strategy='constant', fill_value=0))])
